@@ -25,8 +25,11 @@
 		"grunt": "~0.4"
 	},
 	"devDependencies": {
+		"chai": "1.7.x",
+		"coffee-script": "1.6.x",
 		"grunt": "~0.4",
-		"grunt-contrib-clean": "~0.4"
+		"grunt-contrib-clean": "~0.4",
+		"mocha": "1.12.x"
 	},
 	"license": "BSD"
 }
