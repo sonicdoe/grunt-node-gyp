@@ -1,0 +1,32 @@
+{
+	"name": "grunt-node-gyp",
+	"version": "0.1.0",
+	"author": "Jakob Krigovsky <jakob.krigovsky@gmail.com>",
+	"description": "Run node-gyp commands from Grunt.",
+	"contributors": [
+		{
+			"name": "Jakob Krigovsky",
+			"email": "jakob.krigovsky@gmail.com"
+		}
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/SonicHedgehog/grunt-node-gyp.git"
+	},
+	"keywords": [
+		"gruntplugin",
+		"node-gyp",
+		"build"
+	],
+	"dependencies": {
+		"node-gyp": "*"
+	},
+	"peerDependencies": {
+		"grunt": "~0.4"
+	},
+	"devDependencies": {
+		"grunt": "~0.4",
+		"grunt-contrib-clean": "~0.4"
+	},
+	"license": "BSD"
+}
