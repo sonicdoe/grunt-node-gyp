@@ -147,11 +147,30 @@ describe 'grunt-node-gyp', ->
 				if err then done() else done(new Error 'expected rebuild to fail')
 
 	describe 'default (no command passed)', ->
-		it 'should rebuild a release build by default', ->
-			;
+		it 'should rebuild a release build by default', (done) ->
+			linkBindingGyp()
 
-		it 'should rebuild a debug build if the debug option is passed', ->
-			;
+			execGruntTask 'default', (err) ->
+				return done(err) if err
 
-		it 'should fail if there is no binding.gyp', ->
-			;
+				if !fs.existsSync './build/Release/hello_world.node'
+					return done(new Error 'expected Release/hello_world.node to exist')
+
+				done()
+
+		it 'should rebuild a debug build if the debug option is passed', (done) ->
+			linkBindingGyp()
+
+			execGruntTask 'defaultDebug', (err) ->
+				return done(err) if err
+
+				if !fs.existsSync './build/Debug/hello_world.node'
+					return done(new Error 'expected Debug/hello_world.node to exist')
+
+				done()
+
+		it 'should fail if there is no binding.gyp', (done) ->
+			unlinkBindingGyp()
+
+			execGruntTask 'default', (err) ->
+				if err then done() else done(new Error 'expected rebuild to fail')
