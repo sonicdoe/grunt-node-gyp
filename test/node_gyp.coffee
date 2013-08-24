@@ -108,8 +108,14 @@ describe 'grunt-node-gyp', ->
 				if err then done() else done(new Error 'expected build to fail')
 
 	describe 'clean', ->
-		it 'should remove the build directory', ->
-			;
+		it 'should remove the build directory', (done) ->
+			execGruntTask 'clean', (err) ->
+				return done(err) if err
+
+				if fs.existsSync './build/'
+					return done(new Error 'expected build directory to be removed')
+
+				done()
 
 	describe 'rebuild', ->
 		it 'should rebuild a release build by default', ->
