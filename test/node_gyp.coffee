@@ -73,14 +73,39 @@ describe 'grunt-node-gyp', ->
 				if err then done() else done(new Error 'expected configure to fail')
 
 	describe 'build', ->
-		it 'should build a release build by default', ->
-			;
+		it 'should build a release build by default', (done) ->
+			linkBindingGyp()
 
-		it 'should build a debug build if the debug option is passed', ->
-			;
+			execGruntTask 'configure', (err) ->
+				return done(err) if err
+				
+				execGruntTask 'build', (err) ->
+					return done(err) if err
 
-		it 'should fail if there are no build files', ->
-			;
+					if !fs.existsSync './build/Release/hello_world.node'
+						return done(new Error 'expected Release/hello_world.node to exist')
+
+					done()
+
+		it 'should build a debug build if the debug option is passed', (done) ->
+			linkBindingGyp()
+
+			execGruntTask 'configure', (err) ->
+				return done(err) if err
+
+				execGruntTask 'buildDebug', (err) ->
+					return done(err) if err
+
+					if !fs.existsSync './build/Debug/hello_world.node'
+						return done(new Error 'expected Debug/hello_world.node to exist')
+
+					done()
+
+		it 'should fail if there are no build files', (done) ->
+			rmBuildFiles()
+
+			execGruntTask 'build', (err) ->
+				if err then done() else done(new Error 'expected build to fail')
 
 	describe 'clean', ->
 		it 'should remove the build directory', ->
