@@ -1,12 +1,22 @@
 should = require('chai').should()
-grunt = require 'grunt'
+proxyquire = require 'proxyquire'
+
+gruntError = null
+
+gruntFailStub = {}
+gruntFailStub.warn = gruntFailStub.fatal = (e, errcode) ->
+	gruntError = e
+
+grunt = proxyquire 'grunt', {
+	'./grunt/fail': gruntFailStub
+}
 
 gruntOptions =
 	gruntfile: __dirname + '/support/Gruntfile.coffee'
 
 execGruntTask = (task, callback) ->
 	grunt.tasks 'gyp:' + task, gruntOptions, ->
-		callback()
+		callback(gruntError)
 
 describe 'grunt-node-gyp', ->
 	describe 'configure', ->
