@@ -29,7 +29,8 @@
 		"coffee-script": "1.6.x",
 		"grunt": "~0.4",
 		"grunt-contrib-clean": "~0.4",
-		"mocha": "1.12.x"
+		"mocha": "1.12.x",
+		"proxyquire": "0.5.x"
 	},
 	"license": "BSD"
 }
