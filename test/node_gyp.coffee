@@ -23,6 +23,7 @@ gruntOptions =
 execGruntTask = (task, callback) ->
 	grunt.tasks 'gyp:' + task, gruntOptions, ->
 		callback(gruntError)
+		gruntError = null
 
 describe 'grunt-node-gyp', ->
 	describe 'configure', ->
