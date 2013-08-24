@@ -1,5 +1,6 @@
 should = require('chai').should()
 proxyquire = require 'proxyquire'
+fs = require 'fs'
 
 gruntError = null
 
@@ -24,6 +25,14 @@ execGruntTask = (task, callback) ->
 	grunt.tasks 'gyp:' + task, gruntOptions, ->
 		callback(gruntError)
 		gruntError = null
+
+linkBindingGyp = ->
+	if !fs.existsSync __dirname + '/support/binding.gyp'
+		fs.symlinkSync __dirname + '/support/binding.gyp.original', __dirname + '/support/binding.gyp'
+
+unlinkBindingGyp = ->
+	if fs.existsSync __dirname + '/support/binding.gyp'
+		fs.unlinkSync __dirname + '/support/binding.gyp'
 
 describe 'grunt-node-gyp', ->
 	describe 'configure', ->
