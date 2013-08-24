@@ -34,6 +34,12 @@ unlinkBindingGyp = ->
 	if fs.existsSync __dirname + '/support/binding.gyp'
 		fs.unlinkSync __dirname + '/support/binding.gyp'
 
+rmBuildFiles = ->
+	# Even though there are more build files than config.gypi we just delete
+	# config.gypi as that is sufficient for testing purposes
+	if fs.existsSync __dirname + '/support/build/config.gypi'
+		fs.unlinkSync __dirname + '/support/build/config.gypi'
+
 describe 'grunt-node-gyp', ->
 	describe 'configure', ->
 		it 'should configure a release build by default', (done) ->
