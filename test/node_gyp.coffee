@@ -36,14 +36,35 @@ unlinkBindingGyp = ->
 
 describe 'grunt-node-gyp', ->
 	describe 'configure', ->
-		it 'should configure a release build by default', ->
-			;
+		it 'should configure a release build by default', (done) ->
+			linkBindingGyp()
 
-		it 'should configure a debug build if the debug option is passed', ->
-			;
+			execGruntTask 'configure', (err) ->
+				return done(err) if err
 
-		it 'should fail if there is no binding.gyp', ->
-			;
+				configGypi = fs.readFileSync './build/config.gypi', {encoding: 'utf8'}
+				if configGypi.indexOf('"default_configuration": "Release"') < 0
+					return done(new Error 'expected config.gypi to be configured for release build')
+
+				done()
+
+		it 'should configure a debug build if the debug option is passed', (done) ->
+			linkBindingGyp()
+
+			execGruntTask 'configureDebug', (err) ->
+				return done(err) if err
+
+				configGypi = fs.readFileSync './build/config.gypi', {encoding: 'utf8'}
+				if configGypi.indexOf('"default_configuration": "Debug"') < 0
+					return done(new Error 'expected config.gypi to be configured for debug build')
+
+				done()
+
+		it 'should fail if there is no binding.gyp', (done) ->
+			unlinkBindingGyp()
+
+			execGruntTask 'configure', (err) ->
+				if err then done() else done(new Error 'expected configure to fail')
 
 	describe 'build', ->
 		it 'should build a release build by default', ->
