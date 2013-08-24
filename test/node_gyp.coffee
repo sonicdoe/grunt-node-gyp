@@ -7,8 +7,14 @@ gruntFailStub = {}
 gruntFailStub.warn = gruntFailStub.fatal = (e, errcode) ->
 	gruntError = e
 
+# Silent some Grunt output.
+gruntLogStub = {}
+gruntLogStub.header = ->
+gruntLogStub.writeln = -> return { success: -> }
+
 grunt = proxyquire 'grunt', {
-	'./grunt/fail': gruntFailStub
+	'./grunt/fail': gruntFailStub,
+	'./grunt/log': gruntLogStub
 }
 
 gruntOptions =
