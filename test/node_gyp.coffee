@@ -1,4 +1,12 @@
 should = require('chai').should()
+grunt = require 'grunt'
+
+gruntOptions =
+	gruntfile: __dirname + '/support/Gruntfile.coffee'
+
+execGruntTask = (task, callback) ->
+	grunt.tasks 'gyp:' + task, gruntOptions, ->
+		callback()
 
 describe 'grunt-node-gyp', ->
 	describe 'configure', ->
