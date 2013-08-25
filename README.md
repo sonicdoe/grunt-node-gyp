@@ -101,7 +101,11 @@ Then run the tests:
 $ grunt test
 ```
 
-Testing might take a while as compiling takes time.
+Testing might take a while as compiling takes time. You may need to install the node development header files before by executing:
+
+```shell
+$ ./node_modules/.bin/node-gyp install
+```
 
 ## Release History
 
