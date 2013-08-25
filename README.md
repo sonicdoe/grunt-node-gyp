@@ -118,7 +118,7 @@ $ ./node_modules/.bin/node-gyp install
 
 ## Release History
 
-*(Nothing yet)*
+- v0.1.0: Initial release
 
 ## License
 
