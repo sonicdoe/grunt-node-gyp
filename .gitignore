@@ -14,5 +14,7 @@ results
 npm-debug.log
 node_modules
 
+/tasks/gyp.js
+
 /test/support/build/
 /test/support/binding.gyp
