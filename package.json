@@ -34,5 +34,8 @@
 		"mocha": "1.12.x",
 		"proxyquire": "0.5.x"
 	},
-	"license": "BSD"
+	"license": "BSD",
+	"engines": {
+		"node": ">=0.8.0"
+	}
 }
