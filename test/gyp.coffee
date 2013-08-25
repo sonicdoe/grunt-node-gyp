@@ -48,7 +48,7 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'configure', (err) ->
 				return done(err) if err
 
-				configGypi = fs.readFileSync './build/config.gypi', {encoding: 'utf8'}
+				configGypi = fs.readFileSync './build/config.gypi', 'utf8'
 				if configGypi.indexOf('"default_configuration": "Release"') < 0
 					return done(new Error 'expected config.gypi to be configured for release build')
 
@@ -60,7 +60,7 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'configureDebug', (err) ->
 				return done(err) if err
 
-				configGypi = fs.readFileSync './build/config.gypi', {encoding: 'utf8'}
+				configGypi = fs.readFileSync './build/config.gypi', 'utf8'
 				if configGypi.indexOf('"default_configuration": "Debug"') < 0
 					return done(new Error 'expected config.gypi to be configured for debug build')
 
