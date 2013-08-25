@@ -9,6 +9,10 @@
 			"email": "jakob.krigovsky@gmail.com"
 		}
 	],
+	"scripts": {
+		"prepublish": "grunt package",
+		"test": "grunt test"
+	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/SonicHedgehog/grunt-node-gyp.git"
