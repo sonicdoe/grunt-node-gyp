@@ -41,6 +41,15 @@ grunt.initConfig({
 
 ### Options
 
+#### command
+
+Type: `String`
+Default value: `rebuild`
+
+Specify node-gyp command to execute.
+
+Supported values are `configure`, `build`, `clean` and `rebuild`. See [node-gyp’s README.md](https://github.com/TooTallNate/node-gyp#commands) for command descriptions.
+
 #### options.debug
 
 Type: `Boolean`
