@@ -87,7 +87,7 @@ $ grunt gyp:customTarget
 grunt.initConfig({
   gyp: {
     customTarget: {
-      command: 'configure'
+      command: 'configure',
       options: {
         debug: true
       }
