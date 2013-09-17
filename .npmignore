@@ -1,4 +1,0 @@
-.gitignore
-/tasks/*.coffee
-/test/
-Gruntfile.coffee

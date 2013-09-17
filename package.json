@@ -9,6 +9,12 @@
 			"email": "jakob.krigovsky@gmail.com"
 		}
 	],
+	"files": [
+		"doc/",
+		"tasks/*.js",
+		"LICENSE",
+		"README.md"
+	],
 	"scripts": {
 		"prepublish": "grunt package",
 		"test": "grunt test"
