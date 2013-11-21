@@ -29,7 +29,7 @@
 		"build"
 	],
 	"dependencies": {
-		"node-gyp": "0.10.x"
+		"node-gyp": "0.12.x"
 	},
 	"peerDependencies": {
 		"grunt": "~0.4"
