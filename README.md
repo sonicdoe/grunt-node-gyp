@@ -34,8 +34,8 @@ grunt.initConfig({
     },
     your_target: {
       // Target-specific file lists and/or options go here.
-    },
-  },
+    }
+  }
 })
 ```
 
@@ -87,7 +87,7 @@ $ grunt gyp:customTarget
 grunt.initConfig({
   gyp: {
     customTarget: {
-      command: 'configure'
+      command: 'configure',
       options: {
         debug: true
       }
@@ -118,6 +118,7 @@ $ ./node_modules/.bin/node-gyp install
 
 ## Release History
 
+- v0.2.0: Update `node-gyp` to `0.12.x`
 - v0.1.0: Initial release
 
 ## License

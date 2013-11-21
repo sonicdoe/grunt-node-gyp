@@ -1,4 +1,0 @@
-.gitingore
-/tasks/*.coffee
-/test/
-Gruntfile.coffee
