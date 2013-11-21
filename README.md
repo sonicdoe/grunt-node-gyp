@@ -118,6 +118,7 @@ $ ./node_modules/.bin/node-gyp install
 
 ## Release History
 
+- v0.2.0: Update `node-gyp` to `0.12.x`
 - v0.1.0: Initial release
 
 ## License
