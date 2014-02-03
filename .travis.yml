@@ -8,3 +8,6 @@ install:
   - "npm install -g grunt-cli"
   - "npm install"
   - "./node_modules/.bin/node-gyp install"
+matrix:
+  allow_failures:
+    - node_js: "0.11"
