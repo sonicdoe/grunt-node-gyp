@@ -16,7 +16,8 @@
 		"README.md"
 	],
 	"scripts": {
-		"prepublish": "grunt package",
+		"prepublish": "grunt package && mv .gitignore .gitignore_",
+		"postpublish": "mv .gitignore_ .gitignore",
 		"test": "grunt test"
 	},
 	"repository": {
