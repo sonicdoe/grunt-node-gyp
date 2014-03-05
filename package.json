@@ -17,6 +17,7 @@
 	],
 	"scripts": {
 		"prepublish": "grunt package",
+		"postpublish": "printf '\\e[1;31mRemember to check if the published package contains all necessary files!\\e[0m\\n'",
 		"test": "grunt test"
 	},
 	"repository": {
