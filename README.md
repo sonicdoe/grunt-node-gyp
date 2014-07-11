@@ -1,5 +1,8 @@
 # grunt-node-gyp
 
+[![Node Package](http://img.shields.io/npm/v/grunt-node-gyp.svg)](https://www.npmjs.org/package/grunt-node-gyp)
+[![Build Status](http://img.shields.io/travis/SonicHedgehog/grunt-node-gyp/develop.svg)](https://travis-ci.org/SonicHedgehog/grunt-node-gyp)
+
 > Run node-gyp commands from Grunt.
 
 ## Getting Started
