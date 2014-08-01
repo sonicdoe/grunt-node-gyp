@@ -5,6 +5,7 @@ node_js:
   - "0.8"
 install:
   - "sudo rm -rf /dev/shm && sudo ln -s /run/shm /dev/shm"
+  - "npm install -g npm"
   - "npm install -g grunt-cli"
   - "npm install"
   - "./node_modules/.bin/node-gyp install"
