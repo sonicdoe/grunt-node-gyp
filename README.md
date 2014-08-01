@@ -121,6 +121,7 @@ $ ./node_modules/.bin/node-gyp install
 
 ## Release History
 
+- v0.4.0 (2014-07-01): Update `node-gyp` to `v1.x`
 - v0.3.0 (2014-03-05): Update `node-gyp` to `v0.13.x`
 - v0.2.1 (2014-02-21): Hotfix because v0.2.0 didn’t include the main task file `gyp.js`
 - v0.2.0 (2013-11-21): Update `node-gyp` to `v0.12.x`
