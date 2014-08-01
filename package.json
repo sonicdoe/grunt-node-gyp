@@ -1,6 +1,6 @@
 {
 	"name": "grunt-node-gyp",
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"author": "Jakob Krigovsky <jakob.krigovsky@gmail.com>",
 	"description": "Run node-gyp commands from Grunt.",
 	"contributors": [
