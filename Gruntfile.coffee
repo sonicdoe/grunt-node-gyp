@@ -12,7 +12,7 @@ module.exports = (grunt) ->
 		mochacli:
 			options:
 				bail: true
-				compilers: ['coffee:coffee-script']
+				compilers: ['coffee:coffee-script/register']
 				# Compiling takes time…
 				timeout: 8000
 			files: ['test/']
