@@ -143,7 +143,7 @@ describe 'grunt-node-gyp', ->
 		it 'should fail if there is no binding.gyp', (done) ->
 			unlinkBindingGyp()
 
-			execGruntTask 'configure', (err) ->
+			execGruntTask 'rebuild', (err) ->
 				if err then done() else done(new Error 'expected rebuild to fail')
 
 	describe 'default (no command passed)', ->
