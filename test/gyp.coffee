@@ -26,9 +26,17 @@ execGruntTask = (task, callback) ->
 		callback(gruntError)
 		gruntError = null
 
+# Windows only allows administrators to create symlinks by default,
+# so we create a hardlink instead.
+createLink = (srcpath, dstpath) ->
+	if require('os').platform() is 'win32'
+		fs.linkSync srcpath, dstpath
+	else
+		fs.symlinkSync srcpath, dstpath
+
 linkBindingGyp = ->
 	if !fs.existsSync __dirname + '/support/binding.gyp'
-		fs.symlinkSync __dirname + '/support/binding.gyp.original', __dirname + '/support/binding.gyp'
+		createLink __dirname + '/support/binding.gyp.original', __dirname + '/support/binding.gyp'
 
 unlinkBindingGyp = ->
 	if fs.existsSync __dirname + '/support/binding.gyp'
