@@ -8,10 +8,10 @@ defaultArgv = ['node', '.', '--loglevel=silent']
 # programmatically fires the callback function too early.
 manualRebuild = (callback) ->
 	gyp.commands.clean [], (error) ->
-		callback(error) if error
+		return callback(error) if error
 
 		gyp.commands.configure [], (error) ->
-			callback(error) if error
+			return callback(error) if error
 
 			gyp.commands.build [], callback
 
