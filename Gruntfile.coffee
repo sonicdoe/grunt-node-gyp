@@ -13,8 +13,6 @@ module.exports = (grunt) ->
 			options:
 				bail: true
 				compilers: ['coffee:coffee-script/register']
-				# Compiling takes time…
-				timeout: (120 * 1000)
 			files: ['test/']
 	
 	grunt.loadNpmTasks 'grunt-contrib-clean'

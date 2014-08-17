@@ -49,6 +49,9 @@ rmBuildFiles = ->
 		fs.unlinkSync __dirname + '/support/build/config.gypi'
 
 describe 'grunt-node-gyp', ->
+	# Set timeout to 120 seconds as compiling may take a long time.
+	@timeout (120 * 1000)
+
 	describe 'configure', ->
 		it 'should configure a release build by default', (done) ->
 			linkBindingGyp()
