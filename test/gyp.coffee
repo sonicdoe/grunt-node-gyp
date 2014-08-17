@@ -8,7 +8,7 @@ gruntFailStub = {}
 gruntFailStub.warn = gruntFailStub.fatal = (e, errcode) ->
 	gruntError = e
 
-# Silent some Grunt output.
+# Silence some Grunt output.
 gruntLogStub = {}
 gruntLogStub.header = ->
 gruntLogStub.writeln = -> return { success: -> }
