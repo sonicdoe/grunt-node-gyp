@@ -9,13 +9,12 @@ gruntFailStub.warn = gruntFailStub.fatal = (e, errcode) ->
 	gruntError = e
 
 # Silence some Grunt output.
-gruntLogStub = {}
-gruntLogStub.header = ->
-gruntLogStub.writeln = -> return { success: -> }
+gruntLogStub = new (require('../node_modules/grunt/node_modules/grunt-legacy-log').Log)()
+gruntLogStub.header = gruntLogStub.writeln = gruntLogStub.success = -> gruntLogStub
 
 grunt = proxyquire 'grunt', {
 	'./grunt/fail': gruntFailStub,
-	'./grunt/log': gruntLogStub
+	'grunt-legacy-log': { Log: -> gruntLogStub }
 }
 
 gruntOptions =
