@@ -32,7 +32,7 @@ module.exports = (grunt) ->
 
 		gyp.parseArgv argv
 
-		gypCallback = (error) -> if error then done(false) else done()
+		gypCallback = (error) -> if error then done(error) else done()
 
 		@data.command = 'rebuild' if !@data.command
 
