@@ -1,6 +1,6 @@
 {
 	"name": "grunt-node-gyp",
-	"version": "0.4.0",
+	"version": "0.4.1",
 	"author": "Jakob Krigovsky <jakob.krigovsky@gmail.com>",
 	"description": "Run node-gyp commands from Grunt.",
 	"contributors": [
@@ -17,7 +17,6 @@
 	],
 	"scripts": {
 		"prepublish": "grunt package",
-		"postpublish": "printf '\\e[1;31mRemember to check if the published package contains all necessary files!\\e[0m\\n'",
 		"test": "grunt test"
 	},
 	"repository": {

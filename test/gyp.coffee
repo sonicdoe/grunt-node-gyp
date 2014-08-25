@@ -8,14 +8,13 @@ gruntFailStub = {}
 gruntFailStub.warn = gruntFailStub.fatal = (e, errcode) ->
 	gruntError = e
 
-# Silent some Grunt output.
-gruntLogStub = {}
-gruntLogStub.header = ->
-gruntLogStub.writeln = -> return { success: -> }
+# Silence some Grunt output.
+gruntLogStub = new (require('../node_modules/grunt/node_modules/grunt-legacy-log').Log)()
+gruntLogStub.header = gruntLogStub.writeln = gruntLogStub.success = -> gruntLogStub
 
 grunt = proxyquire 'grunt', {
 	'./grunt/fail': gruntFailStub,
-	'./grunt/log': gruntLogStub
+	'grunt-legacy-log': { Log: -> gruntLogStub }
 }
 
 gruntOptions =
@@ -26,9 +25,17 @@ execGruntTask = (task, callback) ->
 		callback(gruntError)
 		gruntError = null
 
+# Windows only allows administrators to create symlinks by default,
+# so we create a hardlink instead.
+createLink = (srcpath, dstpath) ->
+	if require('os').platform() is 'win32'
+		fs.linkSync srcpath, dstpath
+	else
+		fs.symlinkSync srcpath, dstpath
+
 linkBindingGyp = ->
 	if !fs.existsSync __dirname + '/support/binding.gyp'
-		fs.symlinkSync __dirname + '/support/binding.gyp.original', __dirname + '/support/binding.gyp'
+		createLink __dirname + '/support/binding.gyp.original', __dirname + '/support/binding.gyp'
 
 unlinkBindingGyp = ->
 	if fs.existsSync __dirname + '/support/binding.gyp'
@@ -41,6 +48,9 @@ rmBuildFiles = ->
 		fs.unlinkSync __dirname + '/support/build/config.gypi'
 
 describe 'grunt-node-gyp', ->
+	# Set timeout to 120 seconds as compiling may take a long time.
+	@timeout (120 * 1000)
+
 	describe 'configure', ->
 		it 'should configure a release build by default', (done) ->
 			linkBindingGyp()
@@ -143,7 +153,7 @@ describe 'grunt-node-gyp', ->
 		it 'should fail if there is no binding.gyp', (done) ->
 			unlinkBindingGyp()
 
-			execGruntTask 'configure', (err) ->
+			execGruntTask 'rebuild', (err) ->
 				if err then done() else done(new Error 'expected rebuild to fail')
 
 	describe 'default (no command passed)', ->
