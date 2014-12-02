@@ -20,6 +20,6 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks 'grunt-mocha-cli'
 
 	grunt.registerTask 'package', ['coffee:task']
-	grunt.registerTask 'test', ['clean:test', 'mochacli']
+	grunt.registerTask 'test', ['clean', 'mochacli']
 
 	grunt.registerTask 'default', []
