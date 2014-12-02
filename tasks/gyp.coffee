@@ -28,6 +28,8 @@ module.exports = (grunt) ->
 		# as it was set on an earlier run.
 		if options.debug then argv.push '--debug' else argv.push '--no-debug'
 
+		if options.arch then argv.push "--arch=#{options.arch}"
+
 		gyp.parseArgv argv
 
 		gypCallback = (error) -> if error then done(false) else done()
