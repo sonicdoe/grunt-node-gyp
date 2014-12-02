@@ -156,6 +156,43 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'rebuild', (err) ->
 				if err then done() else done(new Error 'expected rebuild to fail')
 
+	describe 'arch option', ->
+		it 'should build a 32-bit build if specified', (done) ->
+			linkBindingGyp()
+
+			execGruntTask 'archIa32', (err) ->
+				return done(err) if err
+
+				configGypi = fs.readFileSync './build/config.gypi', 'utf8'
+				if configGypi.indexOf('"target_arch": "ia32"') < 0
+					return done(new Error 'expected config.gypi to be configured for 32-bit build')
+
+				done()
+
+		it 'should build a 64-bit build if specified', (done) ->
+			linkBindingGyp()
+
+			execGruntTask 'archX64', (err) ->
+				return done(err) if err
+
+				configGypi = fs.readFileSync './build/config.gypi', 'utf8'
+				if configGypi.indexOf('"target_arch": "x64"') < 0
+					return done(new Error 'expected config.gypi to be configured for 64-bit build')
+
+				done()
+
+		it 'should build an ARM build if specified', (done) ->
+			linkBindingGyp()
+
+			execGruntTask 'archArm', (err) ->
+				return done(err) if err
+
+				configGypi = fs.readFileSync './build/config.gypi', 'utf8'
+				if configGypi.indexOf('"target_arch": "arm"') < 0
+					return done(new Error 'expected config.gypi to be configured for ARM build')
+
+				done()
+
 	describe 'default (no command passed)', ->
 		it 'should rebuild a release build by default', (done) ->
 			linkBindingGyp()

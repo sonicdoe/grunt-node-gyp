@@ -24,6 +24,18 @@ module.exports = (grunt) ->
 				command: 'rebuild'
 				options:
 					debug: true
+			archIa32:
+				command: 'configure'
+				options:
+					arch: 'ia32'
+			archX64:
+				command: 'configure'
+				options:
+					arch: 'x64'
+			archArm:
+				command: 'configure'
+				options:
+					arch: 'arm'
 			default: {}
 			defaultDebug:
 				options:

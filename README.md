@@ -61,6 +61,13 @@ Default value: `false`
 
 Create a debug build.
 
+#### options.arch
+
+Type: `String`
+Default value: Your processor’s architecture
+
+Set the target architecture: `ia32`, `x64` or `arm`.
+
 ### Usage Examples
 
 #### Default Options
@@ -94,6 +101,27 @@ grunt.initConfig({
       command: 'configure',
       options: {
         debug: true
+      }
+    }
+  }
+})
+```
+
+#### Build an ARM build
+
+This would be equivalent to `node-gyp build --arch=arm`.
+
+```shell
+$ grunt gyp:arm
+```
+
+```js
+grunt.initConfig({
+  gyp: {
+    arm: {
+      command: 'build',
+      options: {
+        arch: 'arm'
       }
     }
   }
