@@ -61,6 +61,13 @@ Default value: `false`
 
 Create a debug build.
 
+#### options.arch
+
+Type: `String`
+Default value: Your processor’s architecture
+
+Set the target architecture: `ia32`, `x64` or `arm`.
+
 ### Usage Examples
 
 #### Default Options
@@ -100,6 +107,27 @@ grunt.initConfig({
 })
 ```
 
+#### Build an ARM build
+
+This would be equivalent to `node-gyp build --arch=arm`.
+
+```shell
+$ grunt gyp:arm
+```
+
+```js
+grunt.initConfig({
+  gyp: {
+    arm: {
+      command: 'build',
+      options: {
+        arch: 'arm'
+      }
+    }
+  }
+})
+```
+
 ## Running tests
 
 First, install all dependencies:
@@ -122,6 +150,7 @@ $ ./node_modules/.bin/node-gyp install
 
 ## Release History
 
+- v0.5.0 (2014-12-02): Add [`arch` option](https://github.com/SonicHedgehog/grunt-node-gyp#optionsarch)
 - v0.4.1 (2014-08-25): Fix rebuild not stopping execution if one of the commands has failed
 - v0.4.0 (2014-07-01): Update `node-gyp` to `v1.x`
 - v0.3.0 (2014-03-05): Update `node-gyp` to `v0.13.x`
