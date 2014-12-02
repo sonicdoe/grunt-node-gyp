@@ -107,6 +107,27 @@ grunt.initConfig({
 })
 ```
 
+#### Build an ARM build
+
+This would be equivalent to `node-gyp build --arch=arm`.
+
+```shell
+$ grunt gyp:arm
+```
+
+```js
+grunt.initConfig({
+  gyp: {
+    arm: {
+      command: 'build',
+      options: {
+        arch: 'arm'
+      }
+    }
+  }
+})
+```
+
 ## Running tests
 
 First, install all dependencies:
