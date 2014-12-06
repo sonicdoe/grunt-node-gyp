@@ -12,4 +12,4 @@ void init(v8::Handle<v8::Object> exports) {
 		v8::FunctionTemplate::New(Method)->GetFunction());
 }
 
-NODE_MODULE(helloWorld, init)
+NODE_MODULE(hello_world, init)
