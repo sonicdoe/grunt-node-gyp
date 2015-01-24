@@ -16,7 +16,7 @@ matrix:
     - nodejs_version: "0.11"
 
 install:
-  - ps: Update-NodeJsInstallation (Get-NodeJsLatestBuild $env:nodejs_version)
+  - ps: Install-Product node $env:nodejs_version
   # Otherwise it won’t use the updated npm version
   - SET PATH=%APPDATA%\npm;%PATH%
   - npm install -g npm
