@@ -35,13 +35,13 @@
 		"grunt": "~0.4"
 	},
 	"devDependencies": {
-		"chai": "1.7.x",
+		"chai": "^1.0.0",
 		"coffee-script": "1.7.x",
 		"grunt": "~0.4",
 		"grunt-contrib-clean": "0.5.x",
 		"grunt-contrib-coffee": "0.10.x",
-		"grunt-mocha-cli": "1.0.x",
-		"proxyquire": "1.0.x"
+		"grunt-mocha-cli": "^1.0.0",
+		"proxyquire": "^1.0.0"
 	},
 	"license": "BSD",
 	"engines": {
