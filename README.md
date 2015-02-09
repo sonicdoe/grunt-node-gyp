@@ -160,4 +160,4 @@ $ ./node_modules/.bin/node-gyp install
 
 ## License
 
-`grunt-node-gyp` is licensed under the BSD 2-clause license. See [LICENSE](./LICENSE) for the full license.
+`grunt-node-gyp` itself is licensed under the BSD 2-clause license, subject to additional terms. See [LICENSE](./LICENSE) for the full license.
