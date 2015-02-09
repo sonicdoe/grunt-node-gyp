@@ -10,7 +10,6 @@
 		}
 	],
 	"files": [
-		"doc/",
 		"tasks/*.js",
 		"LICENSE",
 		"README.md"
