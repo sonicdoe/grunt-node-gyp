@@ -10,6 +10,7 @@ environment:
     - nodejs_version: "0.8"
     - nodejs_version: "0.10"
     - nodejs_version: "0.11"
+    - nodejs_version: "0.12"
     - nodejs_version: "1.0" # io.js v1.0
 
 matrix:
