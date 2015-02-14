@@ -1,29 +1,16 @@
 should = require('chai').should()
-proxyquire = require 'proxyquire'
 fs = require 'fs'
+exec = require('child_process').exec
+path = require 'path'
 
-gruntError = null
+supportDir = path.join __dirname, 'support'
 
-gruntFailStub = {}
-gruntFailStub.warn = gruntFailStub.fatal = (e, errcode) ->
-	gruntError = e
-
-# Silence some Grunt output.
-gruntLogStub = new (require('../node_modules/grunt/node_modules/grunt-legacy-log').Log)()
-gruntLogStub.header = gruntLogStub.writeln = gruntLogStub.success = -> gruntLogStub
-
-grunt = proxyquire 'grunt', {
-	'./grunt/fail': gruntFailStub,
-	'grunt-legacy-log': { Log: -> gruntLogStub }
-}
-
-gruntOptions =
-	gruntfile: __dirname + '/support/Gruntfile.coffee'
+execOptions =
+	cwd: supportDir
 
 execGruntTask = (task, callback) ->
-	grunt.tasks 'gyp:' + task, gruntOptions, ->
-		callback(gruntError)
-		gruntError = null
+	exec "grunt gyp:#{task}", execOptions, (error) ->
+		callback error
 
 # Windows only allows administrators to create symlinks by default,
 # so we create a hardlink instead.
@@ -34,18 +21,18 @@ createLink = (srcpath, dstpath) ->
 		fs.symlinkSync srcpath, dstpath
 
 linkBindingGyp = ->
-	if !fs.existsSync __dirname + '/support/binding.gyp'
-		createLink __dirname + '/support/binding.gyp.original', __dirname + '/support/binding.gyp'
+	if !fs.existsSync path.join(supportDir, 'binding.gyp')
+		createLink path.join(supportDir, 'binding.gyp.original'), path.join(supportDir, 'binding.gyp')
 
 unlinkBindingGyp = ->
-	if fs.existsSync __dirname + '/support/binding.gyp'
-		fs.unlinkSync __dirname + '/support/binding.gyp'
+	if fs.existsSync path.join(supportDir, 'binding.gyp')
+		fs.unlinkSync path.join(supportDir, 'binding.gyp')
 
 rmBuildFiles = ->
 	# Even though there are more build files than config.gypi we just delete
 	# config.gypi as that is sufficient for testing purposes
-	if fs.existsSync __dirname + '/support/build/config.gypi'
-		fs.unlinkSync __dirname + '/support/build/config.gypi'
+	if fs.existsSync path.join(supportDir, 'build', 'config.gypi')
+		fs.unlinkSync path.join(supportDir, 'build', 'config.gypi')
 
 describe 'grunt-node-gyp', ->
 	# Set timeout to 120 seconds as compiling may take a long time.
@@ -58,7 +45,7 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'configure', (err) ->
 				return done(err) if err
 
-				configGypi = fs.readFileSync './build/config.gypi', 'utf8'
+				configGypi = fs.readFileSync path.join(supportDir, 'build', 'config.gypi'), 'utf8'
 				if configGypi.indexOf('"default_configuration": "Release"') < 0
 					return done(new Error 'expected config.gypi to be configured for release build')
 
@@ -70,7 +57,7 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'configureDebug', (err) ->
 				return done(err) if err
 
-				configGypi = fs.readFileSync './build/config.gypi', 'utf8'
+				configGypi = fs.readFileSync path.join(supportDir, 'build', 'config.gypi'), 'utf8'
 				if configGypi.indexOf('"default_configuration": "Debug"') < 0
 					return done(new Error 'expected config.gypi to be configured for debug build')
 
@@ -92,7 +79,7 @@ describe 'grunt-node-gyp', ->
 				execGruntTask 'build', (err) ->
 					return done(err) if err
 
-					if !fs.existsSync './build/Release/hello_world.node'
+					if !fs.existsSync path.join(supportDir, 'build', 'Release', 'hello_world.node')
 						return done(new Error 'expected Release/hello_world.node to exist')
 
 					done()
@@ -106,7 +93,7 @@ describe 'grunt-node-gyp', ->
 				execGruntTask 'buildDebug', (err) ->
 					return done(err) if err
 
-					if !fs.existsSync './build/Debug/hello_world.node'
+					if !fs.existsSync path.join(supportDir, 'build', 'Debug', 'hello_world.node')
 						return done(new Error 'expected Debug/hello_world.node to exist')
 
 					done()
@@ -122,7 +109,7 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'clean', (err) ->
 				return done(err) if err
 
-				if fs.existsSync './build/'
+				if fs.existsSync path.join(supportDir, 'build')
 					return done(new Error 'expected build directory to be removed')
 
 				done()
@@ -134,7 +121,7 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'rebuild', (err) ->
 				return done(err) if err
 
-				if !fs.existsSync './build/Release/hello_world.node'
+				if !fs.existsSync path.join(supportDir, 'build', 'Release', 'hello_world.node')
 					return done(new Error 'expected Release/hello_world.node to exist')
 
 				done()
@@ -145,7 +132,7 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'rebuildDebug', (err) ->
 				return done(err) if err
 
-				if !fs.existsSync './build/Debug/hello_world.node'
+				if !fs.existsSync path.join(supportDir, 'build', 'Debug', 'hello_world.node')
 					return done(new Error 'expected Debug/hello_world.node to exist')
 
 				done()
@@ -163,7 +150,7 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'archIa32', (err) ->
 				return done(err) if err
 
-				configGypi = fs.readFileSync './build/config.gypi', 'utf8'
+				configGypi = fs.readFileSync path.join(supportDir, 'build', 'config.gypi'), 'utf8'
 				if configGypi.indexOf('"target_arch": "ia32"') < 0
 					return done(new Error 'expected config.gypi to be configured for 32-bit build')
 
@@ -175,7 +162,7 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'archX64', (err) ->
 				return done(err) if err
 
-				configGypi = fs.readFileSync './build/config.gypi', 'utf8'
+				configGypi = fs.readFileSync path.join(supportDir, 'build', 'config.gypi'), 'utf8'
 				if configGypi.indexOf('"target_arch": "x64"') < 0
 					return done(new Error 'expected config.gypi to be configured for 64-bit build')
 
@@ -187,7 +174,7 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'archArm', (err) ->
 				return done(err) if err
 
-				configGypi = fs.readFileSync './build/config.gypi', 'utf8'
+				configGypi = fs.readFileSync path.join(supportDir, 'build', 'config.gypi'), 'utf8'
 				if configGypi.indexOf('"target_arch": "arm"') < 0
 					return done(new Error 'expected config.gypi to be configured for ARM build')
 
@@ -200,7 +187,7 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'default', (err) ->
 				return done(err) if err
 
-				if !fs.existsSync './build/Release/hello_world.node'
+				if !fs.existsSync path.join(supportDir, 'build', 'Release', 'hello_world.node')
 					return done(new Error 'expected Release/hello_world.node to exist')
 
 				done()
@@ -211,7 +198,7 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'defaultDebug', (err) ->
 				return done(err) if err
 
-				if !fs.existsSync './build/Debug/hello_world.node'
+				if !fs.existsSync path.join(supportDir, 'build', 'Debug', 'hello_world.node')
 					return done(new Error 'expected Debug/hello_world.node to exist')
 
 				done()
