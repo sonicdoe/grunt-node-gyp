@@ -1,29 +1,13 @@
 should = require('chai').should()
-proxyquire = require 'proxyquire'
 fs = require 'fs'
+exec = require('child_process').exec
 
-gruntError = null
-
-gruntFailStub = {}
-gruntFailStub.warn = gruntFailStub.fatal = (e, errcode) ->
-	gruntError = e
-
-# Silence some Grunt output.
-gruntLogStub = new (require('../node_modules/grunt/node_modules/grunt-legacy-log').Log)()
-gruntLogStub.header = gruntLogStub.writeln = gruntLogStub.success = -> gruntLogStub
-
-grunt = proxyquire 'grunt', {
-	'./grunt/fail': gruntFailStub,
-	'grunt-legacy-log': { Log: -> gruntLogStub }
-}
-
-gruntOptions =
-	gruntfile: __dirname + '/support/Gruntfile.coffee'
+execOptions =
+	cwd: __dirname + '/support'
 
 execGruntTask = (task, callback) ->
-	grunt.tasks 'gyp:' + task, gruntOptions, ->
-		callback(gruntError)
-		gruntError = null
+	exec "grunt gyp:#{task}", execOptions, (error) ->
+		callback error
 
 # Windows only allows administrators to create symlinks by default,
 # so we create a hardlink instead.
