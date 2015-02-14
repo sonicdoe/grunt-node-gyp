@@ -42,7 +42,7 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'configure', (err) ->
 				return done(err) if err
 
-				configGypi = fs.readFileSync './build/config.gypi', 'utf8'
+				configGypi = fs.readFileSync __dirname + '/support/build/config.gypi', 'utf8'
 				if configGypi.indexOf('"default_configuration": "Release"') < 0
 					return done(new Error 'expected config.gypi to be configured for release build')
 
@@ -54,7 +54,7 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'configureDebug', (err) ->
 				return done(err) if err
 
-				configGypi = fs.readFileSync './build/config.gypi', 'utf8'
+				configGypi = fs.readFileSync __dirname + '/support/build/config.gypi', 'utf8'
 				if configGypi.indexOf('"default_configuration": "Debug"') < 0
 					return done(new Error 'expected config.gypi to be configured for debug build')
 
@@ -76,7 +76,7 @@ describe 'grunt-node-gyp', ->
 				execGruntTask 'build', (err) ->
 					return done(err) if err
 
-					if !fs.existsSync './build/Release/hello_world.node'
+					if !fs.existsSync __dirname + '/support/build/Release/hello_world.node'
 						return done(new Error 'expected Release/hello_world.node to exist')
 
 					done()
@@ -90,7 +90,7 @@ describe 'grunt-node-gyp', ->
 				execGruntTask 'buildDebug', (err) ->
 					return done(err) if err
 
-					if !fs.existsSync './build/Debug/hello_world.node'
+					if !fs.existsSync __dirname + '/support/build/Debug/hello_world.node'
 						return done(new Error 'expected Debug/hello_world.node to exist')
 
 					done()
@@ -106,7 +106,7 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'clean', (err) ->
 				return done(err) if err
 
-				if fs.existsSync './build/'
+				if fs.existsSync __dirname + '/support/build/'
 					return done(new Error 'expected build directory to be removed')
 
 				done()
@@ -118,7 +118,7 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'rebuild', (err) ->
 				return done(err) if err
 
-				if !fs.existsSync './build/Release/hello_world.node'
+				if !fs.existsSync __dirname + '/support/build/Release/hello_world.node'
 					return done(new Error 'expected Release/hello_world.node to exist')
 
 				done()
@@ -129,7 +129,7 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'rebuildDebug', (err) ->
 				return done(err) if err
 
-				if !fs.existsSync './build/Debug/hello_world.node'
+				if !fs.existsSync __dirname + '/support/build/Debug/hello_world.node'
 					return done(new Error 'expected Debug/hello_world.node to exist')
 
 				done()
@@ -147,7 +147,7 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'archIa32', (err) ->
 				return done(err) if err
 
-				configGypi = fs.readFileSync './build/config.gypi', 'utf8'
+				configGypi = fs.readFileSync __dirname + '/support/build/config.gypi', 'utf8'
 				if configGypi.indexOf('"target_arch": "ia32"') < 0
 					return done(new Error 'expected config.gypi to be configured for 32-bit build')
 
@@ -159,7 +159,7 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'archX64', (err) ->
 				return done(err) if err
 
-				configGypi = fs.readFileSync './build/config.gypi', 'utf8'
+				configGypi = fs.readFileSync __dirname + '/support/build/config.gypi', 'utf8'
 				if configGypi.indexOf('"target_arch": "x64"') < 0
 					return done(new Error 'expected config.gypi to be configured for 64-bit build')
 
@@ -171,7 +171,7 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'archArm', (err) ->
 				return done(err) if err
 
-				configGypi = fs.readFileSync './build/config.gypi', 'utf8'
+				configGypi = fs.readFileSync __dirname + '/support/build/config.gypi', 'utf8'
 				if configGypi.indexOf('"target_arch": "arm"') < 0
 					return done(new Error 'expected config.gypi to be configured for ARM build')
 
@@ -184,7 +184,7 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'default', (err) ->
 				return done(err) if err
 
-				if !fs.existsSync './build/Release/hello_world.node'
+				if !fs.existsSync __dirname + '/support/build/Release/hello_world.node'
 					return done(new Error 'expected Release/hello_world.node to exist')
 
 				done()
@@ -195,7 +195,7 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'defaultDebug', (err) ->
 				return done(err) if err
 
-				if !fs.existsSync './build/Debug/hello_world.node'
+				if !fs.existsSync __dirname + '/support/build/Debug/hello_world.node'
 					return done(new Error 'expected Debug/hello_world.node to exist')
 
 				done()
