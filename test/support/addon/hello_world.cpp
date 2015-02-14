@@ -1,15 +1,13 @@
-#include <node.h>
-#include <v8.h>
+#include <nan.h>
 
-v8::Handle<v8::Value> Method(const v8::Arguments& args) {
-	v8::HandleScope scope;
-
-	return scope.Close(v8::String::New("hello, world"));
+NAN_METHOD(Method) {
+	NanScope();
+	NanReturnValue(NanNew<v8::String>("hello, world"));
 }
 
 void init(v8::Handle<v8::Object> exports) {
-	exports->Set(v8::String::NewSymbol("helloWorld"),
-		v8::FunctionTemplate::New(Method)->GetFunction());
+	exports->Set(NanNew<v8::String>("helloWorld"),
+		NanNew<v8::FunctionTemplate>(Method)->GetFunction());
 }
 
-NODE_MODULE(helloWorld, init)
+NODE_MODULE(hello_world, init)
