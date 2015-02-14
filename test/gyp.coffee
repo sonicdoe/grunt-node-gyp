@@ -9,8 +9,8 @@ execOptions =
 	cwd: supportDir
 
 execGruntTask = (task, callback) ->
-	exec "grunt gyp:#{task}", execOptions, (error) ->
-		callback error
+	exec "grunt gyp:#{task}", execOptions, (error, stdout, stderr) ->
+		callback error, stdout, stderr
 
 # Windows only allows administrators to create symlinks by default,
 # so we create a hardlink instead.
@@ -69,6 +69,15 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'configure', (err) ->
 				if err then done() else done(new Error 'expected configure to fail')
 
+		it 'should pass node-gyp’s error to Grunt if there is no binding.gyp', (done) ->
+			unlinkBindingGyp()
+
+			execGruntTask 'configure', (err, stdout) ->
+				if stdout.indexOf('Warning: `gyp` failed with exit code: 1') < 0
+					return done(new Error 'expected node-gyp’s error to be in stdout')
+
+				done()
+
 	describe 'build', ->
 		it 'should build a release build by default', (done) ->
 			linkBindingGyp()
@@ -103,6 +112,15 @@ describe 'grunt-node-gyp', ->
 
 			execGruntTask 'build', (err) ->
 				if err then done() else done(new Error 'expected build to fail')
+
+		it 'should pass node-gyp’s error to Grunt if there are no build files', (done) ->
+			rmBuildFiles()
+
+			execGruntTask 'build', (err, stdout) ->
+				if stdout.indexOf('Warning: You must run `node-gyp configure` first!') < 0
+					return done(new Error 'expected node-gyp’s error to be in stdout')
+
+				done()
 
 	describe 'clean', ->
 		it 'should remove the build directory', (done) ->
@@ -142,6 +160,15 @@ describe 'grunt-node-gyp', ->
 
 			execGruntTask 'rebuild', (err) ->
 				if err then done() else done(new Error 'expected rebuild to fail')
+
+		it 'should pass node-gyp’s error to Grunt if there is no binding.gyp', (done) ->
+			unlinkBindingGyp()
+
+			execGruntTask 'configure', (err, stdout) ->
+				if stdout.indexOf('Warning: `gyp` failed with exit code: 1') < 0
+					return done(new Error 'expected node-gyp’s error to be in stdout')
+
+				done()
 
 	describe 'arch option', ->
 		it 'should build a 32-bit build if specified', (done) ->
@@ -208,3 +235,12 @@ describe 'grunt-node-gyp', ->
 
 			execGruntTask 'default', (err) ->
 				if err then done() else done(new Error 'expected rebuild to fail')
+
+		it 'should pass node-gyp’s error to Grunt if there is no binding.gyp', (done) ->
+			unlinkBindingGyp()
+
+			execGruntTask 'configure', (err, stdout) ->
+				if stdout.indexOf('Warning: `gyp` failed with exit code: 1') < 0
+					return done(new Error 'expected node-gyp’s error to be in stdout')
+
+				done()
