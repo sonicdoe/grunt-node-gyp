@@ -9,8 +9,8 @@ execOptions =
 	cwd: supportDir
 
 execGruntTask = (task, callback) ->
-	exec "grunt gyp:#{task}", execOptions, (error) ->
-		callback error
+	exec "grunt gyp:#{task}", execOptions, (error, stdout, stderr) ->
+		callback error, stdout, stderr
 
 # Windows only allows administrators to create symlinks by default,
 # so we create a hardlink instead.
