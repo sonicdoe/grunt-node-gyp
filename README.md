@@ -150,6 +150,8 @@ $ ./node_modules/.bin/node-gyp install
 
 ## Release History
 
+This project follows [Semantic Versioning 2](http://semver.org).
+
 - v0.5.0 (2014-12-02): Add [`arch` option](https://github.com/SonicHedgehog/grunt-node-gyp#optionsarch)
 - v0.4.1 (2014-08-25): Fix rebuild not stopping execution if one of the commands has failed
 - v0.4.0 (2014-07-01): Update `node-gyp` to `v1.x`
