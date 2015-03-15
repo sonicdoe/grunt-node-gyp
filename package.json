@@ -38,7 +38,7 @@
 		"coffee-script": "1.9.x",
 		"grunt": "~0.4",
 		"grunt-contrib-clean": "0.5.x",
-		"grunt-contrib-coffee": "0.10.x",
+		"grunt-contrib-coffee": "0.13.x",
 		"grunt-mocha-cli": "^1.0.0",
 		"nan": "^1.0.0"
 	},
