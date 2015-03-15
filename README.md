@@ -1,6 +1,6 @@
 # grunt-node-gyp
 
-[![Node Package](http://img.shields.io/npm/v/grunt-node-gyp.svg)](https://www.npmjs.org/package/grunt-node-gyp)
+[![Node Package](http://img.shields.io/npm/v/grunt-node-gyp.svg)](https://www.npmjs.com/package/grunt-node-gyp)
 [![Linux Build Status](http://img.shields.io/travis/SonicHedgehog/grunt-node-gyp/develop.svg)](https://travis-ci.org/SonicHedgehog/grunt-node-gyp)
 [![Windows Build Status](http://img.shields.io/appveyor/ci/SonicHedgehog/grunt-node-gyp.svg)](https://ci.appveyor.com/project/SonicHedgehog/grunt-node-gyp)
 
