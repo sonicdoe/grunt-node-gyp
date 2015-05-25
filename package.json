@@ -1,6 +1,6 @@
 {
 	"name": "grunt-node-gyp",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"author": "Jakob Krigovsky <jakob.krigovsky@gmail.com>",
 	"description": "Run node-gyp commands from Grunt.",
 	"contributors": [
@@ -28,17 +28,17 @@
 		"build"
 	],
 	"dependencies": {
-		"node-gyp": "1.x"
+		"node-gyp": "2 || 1"
 	},
 	"peerDependencies": {
 		"grunt": "~0.4"
 	},
 	"devDependencies": {
-		"chai": "^1.0.0",
+		"chai": "^2.0.0",
 		"coffee-script": "1.9.x",
 		"grunt": "~0.4",
 		"grunt-contrib-clean": "0.5.x",
-		"grunt-contrib-coffee": "0.10.x",
+		"grunt-contrib-coffee": "0.13.x",
 		"grunt-mocha-cli": "^1.0.0",
 		"nan": "^1.0.0"
 	},
