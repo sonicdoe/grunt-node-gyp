@@ -35,7 +35,7 @@
 	},
 	"devDependencies": {
 		"chai": "^3.0.0",
-		"coffee-script": "1.9.x",
+		"coffee-script": "1.10.x",
 		"grunt": "~0.4",
 		"grunt-contrib-clean": "0.5.x",
 		"grunt-contrib-coffee": "0.13.x",
