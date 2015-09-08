@@ -152,6 +152,7 @@ $ ./node_modules/.bin/node-gyp install
 
 This project follows [Semantic Versioning 2](http://semver.org).
 
+- v3.0.0 (2015-09-08): Update `node-gyp` to `v3`
 - v2.0.0 (2015-05-25): Update `node-gyp` to `v2`
 - v1.0.0 (2015-02-14): Pass node-gyp’s error to Grunt to make error messages more clear
 - v0.5.0 (2014-12-02): Add [`arch` option](https://github.com/SonicHedgehog/grunt-node-gyp#optionsarch)
