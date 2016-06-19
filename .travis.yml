@@ -1,8 +1,18 @@
 language: node_js
 node_js:
+  - "6"
+  - "4"
   - "0.12"
   - "0.10"
   - "0.8"
+env:
+  - CXX=g++-4.8
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
 install:
   - "sudo rm -rf /dev/shm && sudo ln -s /run/shm /dev/shm"
   - "npm install -g npm"

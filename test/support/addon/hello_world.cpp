@@ -1,13 +1,12 @@
 #include <nan.h>
 
 NAN_METHOD(Method) {
-	NanScope();
-	NanReturnValue(NanNew<v8::String>("hello, world"));
+	info.GetReturnValue().Set(Nan::New<v8::String>("hello, world").ToLocalChecked());
 }
 
-void init(v8::Handle<v8::Object> exports) {
-	exports->Set(NanNew<v8::String>("helloWorld"),
-		NanNew<v8::FunctionTemplate>(Method)->GetFunction());
+NAN_MODULE_INIT(init) {
+	Nan::Set(target, Nan::New<v8::String>("helloWorld").ToLocalChecked(),
+		Nan::GetFunction(Nan::New<v8::FunctionTemplate>(Method)).ToLocalChecked());
 }
 
 NODE_MODULE(hello_world, init)
