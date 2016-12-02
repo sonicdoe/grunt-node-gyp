@@ -20,7 +20,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/SonicHedgehog/grunt-node-gyp.git"
+		"url": "https://github.com/sonicdoe/grunt-node-gyp.git"
 	},
 	"keywords": [
 		"gruntplugin",
