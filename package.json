@@ -1,12 +1,12 @@
 {
 	"name": "grunt-node-gyp",
 	"version": "3.1.0",
-	"author": "Jakob Krigovsky <jakob.krigovsky@gmail.com>",
+	"author": "Jakob Krigovsky <jakob@krigovsky.com>",
 	"description": "Run node-gyp commands from Grunt.",
 	"contributors": [
 		{
 			"name": "Jakob Krigovsky",
-			"email": "jakob.krigovsky@gmail.com"
+			"email": "jakob@krigovsky.com"
 		}
 	],
 	"files": [
