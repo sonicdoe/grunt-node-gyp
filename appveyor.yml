@@ -16,9 +16,6 @@ matrix:
 
 install:
   - ps: Install-Product node $env:nodejs_version
-  # Otherwise it won’t use the updated npm version
-  - SET PATH=%APPDATA%\npm;%PATH%
-  - npm install -g npm
   - npm install -g grunt-cli
   - npm install
   - .\node_modules\.bin\node-gyp install
