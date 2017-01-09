@@ -44,7 +44,7 @@
 	},
 	"license": "BSD-2-Clause",
 	"engines": {
-		"node": ">=0.12.0",
+		"node": ">=4",
 		"npm": ">=1.3.7"
 	}
 }
