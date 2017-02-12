@@ -16,7 +16,6 @@ addons:
     packages:
       - g++-4.8
 install:
-  - "sudo rm -rf /dev/shm && sudo ln -s /run/shm /dev/shm"
   - "npm install -g grunt-cli"
   - "npm install"
   - "npm install node-gyp@$NODE_GYP_VERSION"
