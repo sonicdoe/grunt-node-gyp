@@ -152,6 +152,9 @@ $ ./node_modules/.bin/node-gyp install
 
 This project follows [Semantic Versioning 2](http://semver.org).
 
+- v4.0.0 (2017-07-03):
+  - Fix SDK being downloaded to the local directory since node-gyp v3.5
+  - Drop support for Node.js versions older than v4
 - v3.1.0 (2016-06-19): Add support for Grunt `v1`
 - v3.0.0 (2015-09-08): Update `node-gyp` to `v3`
 - v2.0.0 (2015-05-25): Update `node-gyp` to `v2`
