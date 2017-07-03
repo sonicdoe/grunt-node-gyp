@@ -1,8 +1,8 @@
 # grunt-node-gyp
 
 [![Node Package](http://img.shields.io/npm/v/grunt-node-gyp.svg)](https://www.npmjs.com/package/grunt-node-gyp)
-[![Linux Build Status](http://img.shields.io/travis/SonicHedgehog/grunt-node-gyp/develop.svg)](https://travis-ci.org/SonicHedgehog/grunt-node-gyp)
-[![Windows Build Status](http://img.shields.io/appveyor/ci/SonicHedgehog/grunt-node-gyp.svg)](https://ci.appveyor.com/project/SonicHedgehog/grunt-node-gyp)
+[![Linux Build Status](http://img.shields.io/travis/sonicdoe/grunt-node-gyp/develop.svg)](https://travis-ci.org/sonicdoe/grunt-node-gyp)
+[![Windows Build Status](http://img.shields.io/appveyor/ci/sonicdoe/grunt-node-gyp.svg)](https://ci.appveyor.com/project/sonicdoe/grunt-node-gyp)
 
 > Run node-gyp commands from Grunt.
 
@@ -152,11 +152,14 @@ $ ./node_modules/.bin/node-gyp install
 
 This project follows [Semantic Versioning 2](http://semver.org).
 
+- v4.0.0 (2017-07-03):
+  - Fix SDK being downloaded to the local directory since node-gyp v3.5
+  - Drop support for Node.js versions older than v4
 - v3.1.0 (2016-06-19): Add support for Grunt `v1`
 - v3.0.0 (2015-09-08): Update `node-gyp` to `v3`
 - v2.0.0 (2015-05-25): Update `node-gyp` to `v2`
 - v1.0.0 (2015-02-14): Pass node-gyp’s error to Grunt to make error messages more clear
-- v0.5.0 (2014-12-02): Add [`arch` option](https://github.com/SonicHedgehog/grunt-node-gyp#optionsarch)
+- v0.5.0 (2014-12-02): Add [`arch` option](https://github.com/sonicdoe/grunt-node-gyp#optionsarch)
 - v0.4.1 (2014-08-25): Fix rebuild not stopping execution if one of the commands has failed
 - v0.4.0 (2014-07-01): Update `node-gyp` to `v1.x`
 - v0.3.0 (2014-03-05): Update `node-gyp` to `v0.13.x`

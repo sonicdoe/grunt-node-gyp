@@ -244,3 +244,14 @@ describe 'grunt-node-gyp', ->
 					return done(new Error 'expected node-gyp’s error to be in stdout')
 
 				done()
+
+	it 'should not download the SDK to the current directory', (done) ->
+		linkBindingGyp()
+
+		execGruntTask 'default', (err) ->
+			return done(err) if err
+
+			if fs.existsSync path.join(supportDir, process.versions.node)
+				return done(new Error 'expected SDK not to be downloaded to the current directory')
+
+			done()

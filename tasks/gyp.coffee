@@ -1,8 +1,12 @@
+path = require 'path'
+os = require 'os'
+
 gyp = require('node-gyp')()
 
 # The first two arguments are apparently necessary as else nopt won’t include
 # loglevel as an option.
 defaultArgv = ['node', '.', '--loglevel=silent']
+defaultDevDir = path.join os.homedir(), '.node-gyp'
 
 # It is necessary to execute rebuild manually as calling node-gyp’s rebuild
 # programmatically fires the callback function too early.
@@ -31,6 +35,8 @@ module.exports = (grunt) ->
 		if options.arch then argv.push "--arch=#{options.arch}"
 
 		gyp.parseArgv argv
+
+		gyp.devDir = defaultDevDir
 
 		gypCallback = (error) -> if error then done(error) else done()
 

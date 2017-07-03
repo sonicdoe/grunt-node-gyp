@@ -1,12 +1,15 @@
 language: node_js
 node_js:
+  - "8"
   - "6"
   - "4"
-  - "0.12"
-  - "0.10"
-  - "0.8"
 env:
-  - CXX=g++-4.8
+  global:
+    - CXX=g++-4.8
+  matrix:
+    - NODE_GYP_VERSION=3
+    - NODE_GYP_VERSION=2
+    - NODE_GYP_VERSION=1
 addons:
   apt:
     sources:
@@ -14,10 +17,9 @@ addons:
     packages:
       - g++-4.8
 install:
-  - "sudo rm -rf /dev/shm && sudo ln -s /run/shm /dev/shm"
-  - "npm install -g npm"
   - "npm install -g grunt-cli"
   - "npm install"
+  - "npm install node-gyp@$NODE_GYP_VERSION"
   - "./node_modules/.bin/node-gyp install"
 matrix:
   fast_finish: true
