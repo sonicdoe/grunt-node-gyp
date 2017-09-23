@@ -12,7 +12,7 @@ module.exports = (grunt) ->
 		mochacli:
 			options:
 				bail: true
-				compilers: ['coffee:coffee-script/register']
+				compilers: ['coffee:coffeescript/register']
 			files: ['test/']
 	
 	grunt.loadNpmTasks 'grunt-contrib-clean'
