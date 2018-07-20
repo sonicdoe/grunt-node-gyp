@@ -39,7 +39,7 @@
 		"grunt": "1 || 0.4",
 		"grunt-contrib-clean": "1",
 		"grunt-contrib-coffee": "^2.0.0",
-		"grunt-mocha-cli": "3",
+		"grunt-mocha-cli": "4",
 		"nan": "^2.0.0"
 	},
 	"license": "BSD-2-Clause",
