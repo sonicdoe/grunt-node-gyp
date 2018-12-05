@@ -23,14 +23,14 @@
 	"devDependencies": {
 		"chai": "^4.1.2",
 		"coffeescript": "^2.0.0",
-		"grunt": "1 || 0.4",
+		"grunt": "1",
 		"grunt-contrib-clean": "^2.0.0",
 		"grunt-contrib-coffee": "^2.0.0",
 		"grunt-mocha-cli": "4",
 		"nan": "^2.0.0"
 	},
 	"peerDependencies": {
-		"grunt": "1 || 0.4"
+		"grunt": "1"
 	},
 	"engines": {
 		"node": ">=8"
