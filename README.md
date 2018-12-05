@@ -1,28 +1,22 @@
-# grunt-node-gyp
+# grunt-node-gyp [![Linux build status](https://img.shields.io/travis/sonicdoe/grunt-node-gyp.svg?logo=travis)](https://travis-ci.org/sonicdoe/grunt-node-gyp) [![Windows build status](https://img.shields.io/appveyor/ci/sonicdoe/grunt-node-gyp.svg?logo=appveyor)](https://ci.appveyor.com/project/sonicdoe/grunt-node-gyp)
 
-[![Node Package](http://img.shields.io/npm/v/grunt-node-gyp.svg)](https://www.npmjs.com/package/grunt-node-gyp)
-[![Linux Build Status](http://img.shields.io/travis/sonicdoe/grunt-node-gyp/develop.svg)](https://travis-ci.org/sonicdoe/grunt-node-gyp)
-[![Windows Build Status](http://img.shields.io/appveyor/ci/sonicdoe/grunt-node-gyp.svg)](https://ci.appveyor.com/project/sonicdoe/grunt-node-gyp)
+> Run `node-gyp` commands from Grunt
 
-> Run node-gyp commands from Grunt.
+## Getting started
 
-## Getting Started
+If you haven’t used [Grunt](https://gruntjs.com) before, be sure to check out the [Getting started](https://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](https://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you’re familiar with that process, you may install this plugin with this command:
 
-This plugin requires Grunt `v1` or `v0.4`
-
-If you haven’t used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you’re familiar with that process, you may install this plugin with this command:
-
-```shell
+```console
 $ npm install grunt-node-gyp --save-dev
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-node-gyp');
+grunt.loadNpmTasks('grunt-node-gyp')
 ```
 
-For node-gyp to work you’ll have to install all necessary build tools for your platform, see [node-gyp’s README.md](https://github.com/TooTallNate/node-gyp#installation) for that matter. However, you do not have to install node-gyp globally as it is already included with grunt-node-gyp.
+You’ll also need to install all necessary build tools. Take a look at [`node-gyp`’s readme](https://github.com/nodejs/node-gyp#installation) for installation instructions. You don’t need to install `node-gyp` globally, however, as it already comes with `grunt-node-gyp`.
 
 ## The “gyp” task
 
@@ -50,9 +44,9 @@ grunt.initConfig({
 Type: `String`
 Default value: `rebuild`
 
-Specify node-gyp command to execute.
+`node-gyp` command to execute.
 
-Supported values are `configure`, `build`, `clean` and `rebuild`. See [node-gyp’s README.md](https://github.com/TooTallNate/node-gyp#commands) for command descriptions.
+Supported commands are `configure`, `build`, `clean` and `rebuild`. See [node-gyp’s readme](https://github.com/nodejs/node-gyp#commands) for command descriptions.
 
 #### options.debug
 
@@ -68,13 +62,13 @@ Default value: Your processor’s architecture
 
 Set the target architecture: `ia32`, `x64` or `arm`.
 
-### Usage Examples
+### Usage examples
 
-#### Default Options
+#### Default options
 
 This would be equivalent to `node-gyp rebuild`.
 
-```shell
+```console
 $ grunt gyp:addon
 ```
 
@@ -90,7 +84,7 @@ grunt.initConfig({
 
 This would be equivalent to `node-gyp configure --debug`.
 
-```shell
+```console
 $ grunt gyp:customTarget
 ```
 
@@ -111,7 +105,7 @@ grunt.initConfig({
 
 This would be equivalent to `node-gyp build --arch=arm`.
 
-```shell
+```console
 $ grunt gyp:arm
 ```
 
@@ -130,43 +124,36 @@ grunt.initConfig({
 
 ## Running tests
 
-First, install all dependencies:
-
-```shell
+```console
 $ npm install
+$ npm test
 ```
 
-Then run the tests:
+The test suite might take a while as compiling takes time. You may need to install the Node.js header files beforehand:
 
-```shell
-$ grunt test
+```console
+$ npx node-gyp install
 ```
 
-Testing might take a while as compiling takes time. You may need to install the node development header files before by executing:
+## Changelog
 
-```shell
-$ ./node_modules/.bin/node-gyp install
-```
-
-## Release History
-
-This project follows [Semantic Versioning 2](http://semver.org).
+This project follows [Semantic Versioning 2](https://semver.org).
 
 - v4.0.0 (2017-07-03):
-  - Fix SDK being downloaded to the local directory since node-gyp v3.5
+  - Fix SDK being downloaded to the local directory when using `node-gyp` v3.5 or later
   - Drop support for Node.js versions older than v4
-- v3.1.0 (2016-06-19): Add support for Grunt `v1`
-- v3.0.0 (2015-09-08): Update `node-gyp` to `v3`
-- v2.0.0 (2015-05-25): Update `node-gyp` to `v2`
-- v1.0.0 (2015-02-14): Pass node-gyp’s error to Grunt to make error messages more clear
+- v3.1.0 (2016-06-19): Add support for Grunt v1
+- v3.0.0 (2015-09-08): Update `node-gyp` to v3
+- v2.0.0 (2015-05-25): Update `node-gyp` to v2
+- v1.0.0 (2015-02-14): Improve clarity of error messages by passing `node-gyp`’s error on
 - v0.5.0 (2014-12-02): Add [`arch` option](https://github.com/sonicdoe/grunt-node-gyp#optionsarch)
 - v0.4.1 (2014-08-25): Fix rebuild not stopping execution if one of the commands has failed
-- v0.4.0 (2014-07-01): Update `node-gyp` to `v1.x`
-- v0.3.0 (2014-03-05): Update `node-gyp` to `v0.13.x`
-- v0.2.1 (2014-02-21): Hotfix because v0.2.0 didn’t include the main task file `gyp.js`
-- v0.2.0 (2013-11-21): Update `node-gyp` to `v0.12.x`
+- v0.4.0 (2014-07-01): Update `node-gyp` to v1
+- v0.3.0 (2014-03-05): Update `node-gyp` to v0.13
+- v0.2.1 (2014-02-21): Fix borked v0.2.0 release
+- v0.2.0 (2013-11-21): Update `node-gyp` to v0.12
 - v0.1.0 (2013-08-25): Initial release
 
 ## License
 
-`grunt-node-gyp` itself is licensed under the BSD 2-clause license, subject to additional terms. See [LICENSE](./LICENSE) for the full license.
+`grunt-node-gyp` is licensed under the BSD 2-Clause license. See [`LICENSE`](./LICENSE) for the full license text.
