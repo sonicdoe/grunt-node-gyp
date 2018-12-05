@@ -91,7 +91,7 @@ describe 'grunt-node-gyp', ->
 
 			execGruntTask 'configure', (err) ->
 				return done(err) if err
-				
+
 				execGruntTask 'build', (err) ->
 					return done(err) if err
 
