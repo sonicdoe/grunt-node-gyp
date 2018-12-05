@@ -1,4 +1,3 @@
-should = require('chai').should()
 fs = require 'fs'
 exec = require('child_process').exec
 path = require 'path'
