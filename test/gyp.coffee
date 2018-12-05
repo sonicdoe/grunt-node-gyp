@@ -1,6 +1,7 @@
 fs = require 'fs'
 exec = require('child_process').exec
 path = require 'path'
+{assert} = require('chai')
 
 supportDir = path.join __dirname, 'support'
 
@@ -44,9 +45,11 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'configure', (err) ->
 				return done(err) if err
 
-				configGypi = fs.readFileSync path.join(supportDir, 'build', 'config.gypi'), 'utf8'
-				if configGypi.indexOf('"default_configuration": "Release"') < 0
-					return done(new Error 'expected config.gypi to be configured for release build')
+				assert.include(
+					fs.readFileSync(path.join(supportDir, 'build', 'config.gypi'), 'utf8')
+					'"default_configuration": "Release"'
+					'expected config.gypi to be configured for release build'
+				)
 
 				done()
 
@@ -56,9 +59,11 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'configureDebug', (err) ->
 				return done(err) if err
 
-				configGypi = fs.readFileSync path.join(supportDir, 'build', 'config.gypi'), 'utf8'
-				if configGypi.indexOf('"default_configuration": "Debug"') < 0
-					return done(new Error 'expected config.gypi to be configured for debug build')
+				assert.include(
+					fs.readFileSync(path.join(supportDir, 'build', 'config.gypi'), 'utf8')
+					'"default_configuration": "Debug"'
+					'expected config.gypi to be configured for debug build'
+				)
 
 				done()
 
@@ -72,8 +77,11 @@ describe 'grunt-node-gyp', ->
 			unlinkBindingGyp()
 
 			execGruntTask 'configure', (err, stdout) ->
-				if stdout.indexOf('Warning: `gyp` failed with exit code: 1') < 0
-					return done(new Error 'expected node-gyp’s error to be in stdout')
+				assert.include(
+					stdout
+					'Warning: `gyp` failed with exit code: 1'
+					'expected node-gyp’s error to be in stdout'
+				)
 
 				done()
 
@@ -116,8 +124,11 @@ describe 'grunt-node-gyp', ->
 			rmBuildFiles()
 
 			execGruntTask 'build', (err, stdout) ->
-				if stdout.indexOf('Warning: You must run `node-gyp configure` first!') < 0
-					return done(new Error 'expected node-gyp’s error to be in stdout')
+				assert.include(
+					stdout
+					'Warning: You must run `node-gyp configure` first!'
+					'expected node-gyp’s error to be in stdout'
+				)
 
 				done()
 
@@ -164,8 +175,11 @@ describe 'grunt-node-gyp', ->
 			unlinkBindingGyp()
 
 			execGruntTask 'configure', (err, stdout) ->
-				if stdout.indexOf('Warning: `gyp` failed with exit code: 1') < 0
-					return done(new Error 'expected node-gyp’s error to be in stdout')
+				assert.include(
+					stdout
+					'Warning: `gyp` failed with exit code: 1'
+					'expected node-gyp’s error to be in stdout'
+				)
 
 				done()
 
@@ -176,9 +190,11 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'archIa32', (err) ->
 				return done(err) if err
 
-				configGypi = fs.readFileSync path.join(supportDir, 'build', 'config.gypi'), 'utf8'
-				if configGypi.indexOf('"target_arch": "ia32"') < 0
-					return done(new Error 'expected config.gypi to be configured for 32-bit build')
+				assert.include(
+					fs.readFileSync(path.join(supportDir, 'build', 'config.gypi'), 'utf8')
+					'"target_arch": "ia32"'
+					'expected config.gypi to be configured for 32-bit build'
+				)
 
 				done()
 
@@ -188,9 +204,11 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'archX64', (err) ->
 				return done(err) if err
 
-				configGypi = fs.readFileSync path.join(supportDir, 'build', 'config.gypi'), 'utf8'
-				if configGypi.indexOf('"target_arch": "x64"') < 0
-					return done(new Error 'expected config.gypi to be configured for 64-bit build')
+				assert.include(
+					fs.readFileSync(path.join(supportDir, 'build', 'config.gypi'), 'utf8')
+					'"target_arch": "x64"'
+					'expected config.gypi to be configured for 64-bit build'
+				)
 
 				done()
 
@@ -200,9 +218,11 @@ describe 'grunt-node-gyp', ->
 			execGruntTask 'archArm', (err) ->
 				return done(err) if err
 
-				configGypi = fs.readFileSync path.join(supportDir, 'build', 'config.gypi'), 'utf8'
-				if configGypi.indexOf('"target_arch": "arm"') < 0
-					return done(new Error 'expected config.gypi to be configured for ARM build')
+				assert.include(
+					fs.readFileSync(path.join(supportDir, 'build', 'config.gypi'), 'utf8')
+					'"target_arch": "arm"'
+					'expected config.gypi to be configured for ARM build'
+				)
 
 				done()
 
@@ -239,8 +259,11 @@ describe 'grunt-node-gyp', ->
 			unlinkBindingGyp()
 
 			execGruntTask 'configure', (err, stdout) ->
-				if stdout.indexOf('Warning: `gyp` failed with exit code: 1') < 0
-					return done(new Error 'expected node-gyp’s error to be in stdout')
+				assert.include(
+					stdout
+					'Warning: `gyp` failed with exit code: 1'
+					'expected node-gyp’s error to be in stdout'
+				)
 
 				done()
 
