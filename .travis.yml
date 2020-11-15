@@ -3,6 +3,10 @@ node_js:
   - "10"
   - "8"
 env:
+  - NODE_GYP_VERSION=7
+  - NODE_GYP_VERSION=6
+  - NODE_GYP_VERSION=5
+  - NODE_GYP_VERSION=4
   - NODE_GYP_VERSION=3
 install:
   - "npm install"
