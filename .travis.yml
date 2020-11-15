@@ -3,7 +3,6 @@ node_js:
   - "14"
   - "12"
   - "10"
-  - "8"
 env:
   - NODE_GYP_VERSION=7
   - NODE_GYP_VERSION=6
