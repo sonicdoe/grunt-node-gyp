@@ -4,8 +4,6 @@ node_js:
   - "8"
 env:
   - NODE_GYP_VERSION=3
-  - NODE_GYP_VERSION=2
-  - NODE_GYP_VERSION=1
 install:
   - "npm install"
   - "npm install node-gyp@$NODE_GYP_VERSION"
