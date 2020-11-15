@@ -12,9 +12,9 @@ module.exports = (grunt) ->
 		mochacli:
 			options:
 				bail: true
-				compilers: ['coffee:coffee-script/register']
-			files: ['test/']
-	
+				require: ['coffeescript/register']
+			files: ['test/**/*.coffee']
+
 	grunt.loadNpmTasks 'grunt-contrib-clean'
 	grunt.loadNpmTasks 'grunt-contrib-coffee'
 	grunt.loadNpmTasks 'grunt-mocha-cli'

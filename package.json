@@ -1,50 +1,38 @@
 {
 	"name": "grunt-node-gyp",
-	"version": "4.0.0",
-	"author": "Jakob Krigovsky <jakob@krigovsky.com>",
+	"version": "5.0.0",
 	"description": "Run node-gyp commands from Grunt.",
-	"contributors": [
-		{
-			"name": "Jakob Krigovsky",
-			"email": "jakob@krigovsky.com"
-		}
-	],
-	"files": [
-		"tasks/*.js",
-		"LICENSE",
-		"README.md"
-	],
-	"scripts": {
-		"prepublish": "grunt package",
-		"test": "grunt test"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/sonicdoe/grunt-node-gyp.git"
-	},
 	"keywords": [
 		"gruntplugin",
 		"node-gyp",
 		"build"
 	],
-	"dependencies": {
-		"node-gyp": "3 || 2 || 1"
+	"license": "BSD-2-Clause",
+	"repository": "sonicdoe/grunt-node-gyp",
+	"author": "Jakob Krigovsky <jakob@krigovsky.com>",
+	"files": [
+		"tasks/*.js"
+	],
+	"scripts": {
+		"prepare": "grunt package",
+		"test": "grunt test"
 	},
-	"peerDependencies": {
-		"grunt": "1 || 0.4"
+	"dependencies": {
+		"node-gyp": ">=3"
 	},
 	"devDependencies": {
-		"chai": "^3.0.0",
-		"coffee-script": "1.12.x",
-		"grunt": "1 || 0.4",
-		"grunt-contrib-clean": "1",
-		"grunt-contrib-coffee": "1",
-		"grunt-mocha-cli": "3",
-		"nan": "^2.0.0"
+		"chai": "^4.1.2",
+		"coffeescript": "^2.0.0",
+		"grunt": "^1.3.0",
+		"grunt-contrib-clean": "^2.0.0",
+		"grunt-contrib-coffee": "^2.0.0",
+		"grunt-mocha-cli": "^6.0.0",
+		"nan": "^2.14.2"
 	},
-	"license": "BSD-2-Clause",
+	"peerDependencies": {
+		"grunt": "1"
+	},
 	"engines": {
-		"node": ">=4",
-		"npm": ">=1.3.7"
+		"node": ">=10"
 	}
 }
