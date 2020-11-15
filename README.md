@@ -139,6 +139,12 @@ $ npx node-gyp install
 
 This project follows [Semantic Versioning 2](https://semver.org).
 
+- v5.0.0 (2020-11-15):
+  - Update `node-gyp` to v7
+  - Add support for `node-gyp` v4 and later
+  - Drop support for `node-gyp` versions older than v3
+  - Drop support for Grunt v0.4
+  - Drop support for Node.js versions older than v10
 - v4.0.0 (2017-07-03):
   - Fix SDK being downloaded to the local directory when using `node-gyp` v3.5 or later
   - Drop support for Node.js versions older than v4
