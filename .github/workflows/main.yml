@@ -1,0 +1,31 @@
+name: CI
+on:
+  - push
+  - pull_request
+jobs:
+  test:
+    name: ${{ matrix.os }}, Node.js ${{ matrix.node-version }}, node-gyp ${{ matrix.node-gyp-version }}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm install node-gyp@${{ matrix.node-gyp-version }}
+      - run: npx node-gyp install
+      - run: npm test
+    strategy:
+      matrix:
+        os:
+          - windows-latest
+          - ubuntu-latest
+        node-version:
+          - 14
+          - 12
+        node-gyp-version:
+          - 8
+          - 7
+          - 6
+          - 5
+      fail-fast: false

@@ -1,4 +1,4 @@
-# grunt-node-gyp [![Linux build status](https://img.shields.io/travis/sonicdoe/grunt-node-gyp.svg?logo=travis)](https://travis-ci.org/sonicdoe/grunt-node-gyp) [![Windows build status](https://img.shields.io/appveyor/ci/sonicdoe/grunt-node-gyp.svg?logo=appveyor)](https://ci.appveyor.com/project/sonicdoe/grunt-node-gyp)
+# grunt-node-gyp [![CI](https://github.com/sonicdoe/grunt-node-gyp/workflows/CI/badge.svg)](https://github.com/sonicdoe/grunt-node-gyp/actions?query=workflow%3ACI)
 
 > Run `node-gyp` commands from Grunt
 
