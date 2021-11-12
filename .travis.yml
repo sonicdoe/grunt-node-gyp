@@ -4,6 +4,7 @@ node_js:
   - "12"
   - "10"
 env:
+  - NODE_GYP_VERSION=8
   - NODE_GYP_VERSION=7
   - NODE_GYP_VERSION=6
   - NODE_GYP_VERSION=5
