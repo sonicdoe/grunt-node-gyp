@@ -7,8 +7,6 @@ env:
   - NODE_GYP_VERSION=7
   - NODE_GYP_VERSION=6
   - NODE_GYP_VERSION=5
-  - NODE_GYP_VERSION=4
-  - NODE_GYP_VERSION=3
 install:
   - "npm install"
   - "npm install node-gyp@$NODE_GYP_VERSION"

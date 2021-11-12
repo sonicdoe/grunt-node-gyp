@@ -18,7 +18,7 @@
 		"test": "grunt test"
 	},
 	"dependencies": {
-		"node-gyp": ">=3"
+		"node-gyp": ">=5"
 	},
 	"devDependencies": {
 		"chai": "^4.1.2",
