@@ -25,6 +25,7 @@ jobs:
           - 14
           - 12
         node-gyp-version:
+          - 9
           - 8
           - 7
           - 6
