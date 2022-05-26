@@ -23,7 +23,6 @@ jobs:
         node-version:
           - 16
           - 14
-          - 12
         node-gyp-version:
           - 9
           - 8
